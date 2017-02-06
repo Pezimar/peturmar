@@ -1,0 +1,52 @@
+{{!< default}}
+<main class="main_petun" role="main">
+
+	{{#foreach posts}}
+		{{#if @first}}
+			<article class="article_petun first-post_petun postimage_petun" style="background-image:url({{image}});" role="article" itemscope itemtype="http://schema.org/Article">
+				<div class="dark-layer">
+					<header class="postheader_petun">
+						<h1 class="posttitle_petun" itemprop="headline"><a href="{{{url}}}" rel="bookmark"> {{title}} </a></h1>
+						<time class="date_petun" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">
+							{{date format='dddd DD MMM YYYY'}}
+						</time>
+						<div class="posttags_uber">
+							{{#if tags}}
+								Tags: {{tags separator=" | "}}
+							{{/if}}
+						</div>
+						<div class="postpreview_petun">
+							<a href="{{{url}}}" rel="bookmark"><p class="whitetext">{{excerpt words="40"}}...</p></a>
+						</div>
+						<a href="{{{url}}}"><button class="btn btn-primary">Read More</button></a>
+					</header>
+				</div>
+			</article>
+		{{/if}}
+	{{/foreach}}
+
+	<div class="row">
+		{{#foreach posts}}
+			{{^if @first}}
+				<article class="article_petun not-first-post_petun col-sm-12 col-md-4" style="background-image:url({{image}});" role="article" itemscope itemtype="http://schema.org/Article">
+					<div class="darker-layer">
+						<a href="{{{url}}}" rel="bookmark"><h1 class="posttitle_petun" itemprop="headline"> {{title}} </h1></a>
+						<time class="date_petun" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">
+							{{date format='dddd DD MMM YYYY'}}
+						</time>
+						<div class="postpreview_petun">
+							<a href="{{{url}}}" rel="bookmark"><p>{{excerpt words="15"}}...</p></a>
+						</div>
+						<a href="{{{url}}}"><button class="btn btn-primary">Read More</button></a>
+					</div>
+				</article>
+			{{/if}}
+		{{/foreach}}
+	</div>
+
+	<div class="pagination_petun">
+		{{#if pagination}}
+			{{{pagination}}}
+		{{/if}}
+	</div>
+</main>

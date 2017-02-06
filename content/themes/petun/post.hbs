@@ -1,0 +1,80 @@
+{{!< default}}
+<main class="main_petun" role="main">
+	{{#post}}
+	<article class="article_petun" role="article" itemscope itemtype="http://schema.org/Article">
+		<!-- {{#if image}}
+			<img src="{{image}}" alt="{{title}}" class="postimage_petun">
+		{{/if}} -->
+		<header class="postheader_petun postimage_petun" style="background-image:url({{image}});">
+			<h1 class="posttitle_petun" itemprop="headline">{{title}}</h1>
+			<time class="date_petun" datetime="{{date format="YYYY-MM-DD"}}" itemprop="datePublished">{{date format='dddd DD MMM YYYY'}}</time>
+			{{#if tags}}
+				<div class="posttags_petun">
+					Tags: {{tags separator=" | "}}
+				</div>
+			{{/if}}
+		</header>
+		<div class="postcontent_petun" itemprop="articleBody">
+			{{content}}
+		</div>
+		{{#if author}}
+			<footer class="postfooter_petun">
+				<address itemscope itemtype="http://schema.org/Person">
+				{{#if author.image}}
+				<div class="authorimage_petun"><img src="{{author.image}}" itemprop="image" /></div>
+				{{/if}}
+				<h4 class="authorname_petun"><span itemprop="author">{{author.name}}</span></h4>
+				{{#if author.website}}
+				<div class="authorwebsite_petun"><a href="{{author.website}}" itemprop="url">{{author.website}}</a></div>
+				{{/if}}
+				</address>
+				<div class="authorbio_petun">
+				<p>{{author.bio}}</p>
+				</div>
+			</footer>
+		{{/if}}
+		<div class="sharepost_petun">
+			<h4 class="share_petun">Share this post: &nbsp;</h4>
+			<a class="share_petun icon-twitter" target="_blank" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"><span class="hidethis_petun">Twitter</span></a>
+			<a class="share_petun icon-facebook" target="_blank" href="http://www.facebook.com/sharer.php?u={{url absolute="true"}}"><span class="hidethis_petun">Facebook</span></a>
+			<a class="share_petun icon-gplus" target="_blank" href="https://plus.google.com/share?url={{url absolute="true"}}"><span class="hidethis_petun">Google+</span></a>
+		</div>
+		<!--
+		<div id="disqus_thread"></div>
+		<script>
+		/**
+		*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+		*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+		/*
+		var disqus_config = function () {
+		this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+		this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+		};
+		*/
+		(function() { // DON'T EDIT BELOW THIS LINE
+		var d = document, s = d.createElement('script');
+		s.src = '//peturmar.disqus.com/embed.js';
+		s.setAttribute('data-timestamp', +new Date());
+		(d.head || d.body).appendChild(s);
+		})();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments.</a></noscript>
+		-->
+	</article>
+	<div class="postsurfing_petun">	
+		{{#next_post}}
+			<a href="{{url}}">Next post: {{title}}</a>
+		{{/next_post}}
+		{{#prev_post}}
+			<a href="{{url}}">Previous post: {{title}}</a>
+		{{/prev_post}}
+	</div>
+
+	{{/post}}
+	{{#if pagination}}
+	<div class="pagination_petun">
+	{{{pagination}}}
+	</div>
+	{{/if}}
+</main>
+<script src="/assets/js/postanimations.js"></script>

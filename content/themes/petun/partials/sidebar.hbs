@@ -1,0 +1,14 @@
+<aside class="sidebar_petun">
+	{{#get "posts" limit="3" as |recents|}}
+		<section class="recentposts_petun">
+			<h3>Recent posts</h3>
+			<ol>
+				{{#foreach recents}}
+			    	<li><a href="{{url}}">{{title}}</a></li>
+			    {{/foreach}}
+			</ol>
+		</section>
+	{{else}}
+	<p>No featured posts...</p>
+	{{/get}}
+</aside>
