@@ -48,6 +48,14 @@ body {
 .navbar{
 	border-radius: 0;
 }
+.navbar-right {
+    float: right!important;
+    margin-right: 5px;
+}
+.navbar-left {
+    float: left!important;
+}
+
 
 
 /***** footer *****/
@@ -162,7 +170,6 @@ body {
 	font-size: 1.2em;
 	color: #000;
 	font-family: 'Libre Baskerville', serif;
-	opacity: 0.2;
 }
 .postcontent_petun p img {
 	width: 100%;
